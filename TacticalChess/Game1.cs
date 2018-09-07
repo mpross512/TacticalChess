@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using System;
 
 namespace TacticalChess
 {
@@ -11,10 +12,22 @@ namespace TacticalChess
     {
         GraphicsDeviceManager graphics;
         SpriteBatch spriteBatch;
+        Texture2D pieces;
+
+        private float targetFPS = 60f;
         
         public Game1()
         {
+
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = 480;
+            graphics.PreferredBackBufferHeight = 270;
+            graphics.ApplyChanges();
+
+            Window.AllowUserResizing = true;
+
+            TargetElapsedTime = TimeSpan.FromMilliseconds(1000.0f / targetFPS);
+
             Content.RootDirectory = "Content";
         }
 
@@ -39,6 +52,7 @@ namespace TacticalChess
         {
             // Create a new SpriteBatch, which can be used to draw textures.
             spriteBatch = new SpriteBatch(GraphicsDevice);
+            pieces = Content.Load<Texture2D>("Sprites/chesspieces");
 
             // TODO: use this.Content to load your game content here
         }
@@ -63,7 +77,7 @@ namespace TacticalChess
                 Exit();
 
             // TODO: Add your update logic here
-
+            Console.WriteLine(1/(float) gameTime.ElapsedGameTime.TotalSeconds);
             base.Update(gameTime);
         }
 
@@ -76,6 +90,11 @@ namespace TacticalChess
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
             // TODO: Add your drawing code here
+            spriteBatch.Begin();
+
+            spriteBatch.Draw(pieces, new Vector2(50, 50), Color.White);
+
+            spriteBatch.End();
 
             base.Draw(gameTime);
         }

@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TacticalChess.World
+namespace TacticalChess.Framework.InputCommand
 {
-    interface ITile
+    interface ICommand
     {
-        void Render();
+        void Execute();
+
+        void Unexecute();
     }
 }

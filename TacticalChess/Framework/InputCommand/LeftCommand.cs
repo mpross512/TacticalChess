@@ -16,6 +16,7 @@ namespace TacticalChess.Framework.InputCommand
         public void Execute()
         {
             Console.WriteLine("Left");
+            Selector.getSelector().X_Pos--;
         }
 
         public void Unexecute()

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework.Input;
 using TacticalChess.Framework.InputCommand;
+using TacticalChess.World;
 
 namespace TacticalChess.Framework
 {
@@ -49,6 +50,8 @@ namespace TacticalChess.Framework
                 inputHandler = new InputHandler();
             return inputHandler;
         }
+
+        public GameWorld GameWorld { get; set; }
 
         public void Update()
         {

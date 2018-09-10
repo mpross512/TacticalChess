@@ -82,6 +82,7 @@ namespace TacticalChess
                 Exit();
 
             InputHandler.getInputHandler().Update();
+            world.Update();
 
             base.Update(gameTime);
         }

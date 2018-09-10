@@ -11,29 +11,12 @@ namespace TacticalChess.Pieces
 {
     class Pawn : GamePiece
     {
-        public Pawn(PieceColor color) : this (color, 0, 0)
+        public Pawn(PieceColor color, int x, int y) : base(color, x, y)
         {
-
-        }
-
-        public Pawn(PieceColor color, int x, int y)
-        {
-            pieceColor = color;
-            this.x = x;
-            this.y = y;
-        }
-
-        public override void Update()
-        {
-            
-        }
-
-        public override void Render(SpriteBatch spriteBatch)
-        {
-            if (pieceColor == PieceColor.White)
-                spriteBatch.Draw(sprite, new Rectangle(x * 32, y * 32, 32, 32), new Rectangle(0, 0, 32, 32), Color.White);
+            if (color == PieceColor.White)
+                sourceRectangle = new Rectangle(0, 0, 32, 32);
             else
-                spriteBatch.Draw(sprite, new Rectangle(x * 32, y * 32, 32, 32), new Rectangle(0, 32, 32, 32), Color.White);
+                sourceRectangle = new Rectangle(0, 32, 32, 32);
         }
     }
 }

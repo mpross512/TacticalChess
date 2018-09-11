@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TacticalChess.World;
 
 namespace TacticalChess.Pieces
 {
@@ -13,6 +14,7 @@ namespace TacticalChess.Pieces
     {
         protected Texture2D sprite;
         protected int x, y;
+        protected int hp;
         protected PieceColor pieceColor;
         protected Rectangle destinationRectangle, sourceRectangle;
         protected bool selected;
@@ -28,6 +30,11 @@ namespace TacticalChess.Pieces
         {
             get { return y; }
             set { y = value; }
+        }
+        public int HP
+        {
+            get { return hp; }
+            set { hp = value; }
         }
         public bool Selected
         {
@@ -78,11 +85,13 @@ namespace TacticalChess.Pieces
         }
 
         public void Render(SpriteBatch spriteBatch)
-        {   
-            if(!selected)
+        {
+            if (!selected)
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.White);
             else
+            {
                 spriteBatch.Draw(sprite, destinationRectangle, sourceRectangle, Color.Blue);
+            }
         }
     }
 }

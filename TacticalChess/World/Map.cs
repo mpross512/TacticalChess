@@ -16,6 +16,7 @@ namespace TacticalChess.World
         private int width, height;
         private ITile[,] playingField;
         private GamePiece[,] pieceField;
+        private Point selectedPiece;
 
         public Map(Game Game) : this(Game, 8, 8) { }
 
@@ -29,6 +30,7 @@ namespace TacticalChess.World
             playingField = new ITile[height, width];
             pieceField = new GamePiece[height, width];
             InitializeMap(Game);
+            selectedPiece = new Point(0, 0);
         }
 
         public void LoadContent(ContentManager Content)
@@ -62,18 +64,33 @@ namespace TacticalChess.World
             return map;
         }
 
-        public int Width { get; set; }
+        public int Width { get { return width; } }
 
-        public int Height { get; set; }
+        public int Height { get { return height; } }
 
         public ITile[,] PlayingField { get { return playingField; } set{ playingField = value; } }
 
         public GamePiece[,] PieceField { get { return pieceField; } }
 
-        public void setSelected(int x, int y)
+        public Point SelectedPiece { get { return selectedPiece; } set { selectedPiece = value; } }
+
+        public void setSelected(bool selected, int x, int y)
         {
             if (pieceField[y, x] != null)
-                pieceField[y, x].Selected = !pieceField[y,x].Selected;
+            {
+                pieceField[y, x].Selected = selected;
+                if(selected)
+                    selectedPiece = new Point(x, y);
+                else
+                    selectedPiece = new Point(-1, -1);
+            }
+        }
+
+        public bool IsSelected(int x, int y)
+        {
+            if (pieceField[y, x] != null)
+                return pieceField[y, x].Selected;
+            return false;
         }
 
         public void Render(SpriteBatch spriteBatch)

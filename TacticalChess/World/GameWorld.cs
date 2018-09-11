@@ -74,10 +74,10 @@ namespace TacticalChess.World
             {
                 for(int c = -(MOVE_RADIUS - Math.Abs(r)); c <= (MOVE_RADIUS - Math.Abs(r)); c++)
                 {
-                    spriteBatch.Draw(validSpace, new Rectangle((c*32) + (x*32), (r*32) + (y*32), 32, 32), Color.White);
+                    if(c + x < Map.GetMap().Width && c + x >= 0 && r + y < Map.GetMap().Height && r + y >= 0 && Map.GetMap().PieceField[r+y,c+x] == null)
+                        spriteBatch.Draw(validSpace, new Rectangle((c*32) + (x*32), (r*32) + (y*32), 32, 32), Color.White);
                 }
             }
-            
         }
     }
 }

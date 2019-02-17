@@ -25,7 +25,7 @@ namespace TacticalChess.World
         public GameWorld(Game1 Game)
         {
             pieces = new List<GamePiece>();
-            map = new Map(Game, 15, 8);
+            map = Map.GetMap(Game, 15, 8);
 
             pieces.Add(new Knight(GamePiece.PieceColor.White, 1, 0));
             pieces.Add(new King(GamePiece.PieceColor.Black, 4, 4));

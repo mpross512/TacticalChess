@@ -14,10 +14,10 @@ namespace TacticalChess.Framework
         private static InputHandler inputHandler;
         private KeyboardState lastKeyboardState, currentKeyboardState;
 
-        private Keys up = Keys.Up;
-        private Keys down = Keys.Down;
-        private Keys left = Keys.Left;
-        private Keys right = Keys.Right;
+        private Keys up = Keys.W;
+        private Keys down = Keys.S;
+        private Keys left = Keys.A;
+        private Keys right = Keys.D;
         private Keys enter = Keys.Enter;
 
         private UpCommand upCommand;

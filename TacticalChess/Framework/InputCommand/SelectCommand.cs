@@ -27,11 +27,12 @@ namespace TacticalChess.Framework.InputCommand
                     Selector.getSelector().Y_Pos
                 );
             }
-            else
+            else if(Map.GetMap().SelectedPiece.X != -1)
             {
                 Map.GetMap().PieceField[Map.GetMap().SelectedPiece.Y, Map.GetMap().SelectedPiece.X].X = xPos;
                 Map.GetMap().PieceField[Map.GetMap().SelectedPiece.Y, Map.GetMap().SelectedPiece.X].Y = yPos;
                 Map.GetMap().SelectedPiece = new Microsoft.Xna.Framework.Point(xPos, yPos);
+                Map.GetMap().setSelected(false, xPos, yPos);
             }
         }
 

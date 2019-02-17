@@ -30,7 +30,7 @@ namespace TacticalChess.World
             playingField = new ITile[height, width];
             pieceField = new GamePiece[height, width];
             InitializeMap(Game);
-            selectedPiece = new Point(0, 0);
+            selectedPiece = new Point(-1, -1);
         }
 
         public void LoadContent(ContentManager Content)
@@ -61,6 +61,18 @@ namespace TacticalChess.World
             {
                 //map = this;
             }
+            return map;
+        }
+
+        public static Map GetMap(Game Game)
+        {
+            map = new Map(Game);
+            return map;
+        }
+
+        public static Map GetMap(Game Game, int x, int y)
+        {
+            map = new Map(Game, x, y);
             return map;
         }
 
